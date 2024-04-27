@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>com.jett.androidtool</id>
+    <name>Androidtool</name>
+    <description>这是一个android设备的工具软件...............................................</description>
+    <version>1.0</version>
+    <vendor email="support@jett.com" url="http://www.jett.com">jett</vendor>
+
+    <actions>
+        <group id="MyPlugin.MenuTools" text="_Menu Tools" description="Menu tools for plugin" >
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="MyPlugin.MenuTools.CaptureScreenAction"
+                    class="com.jett.androidtool.CaptureScreenAction"
+                    text="Capture Screen"
+                    description="Capture Android Screen"
+                    icon="AllIcons.General.Information">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
