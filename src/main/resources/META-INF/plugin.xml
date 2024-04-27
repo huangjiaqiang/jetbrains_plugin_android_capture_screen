@@ -4,7 +4,6 @@
     <description>这是一个android设备的工具软件...............................................</description>
     <version>1.0</version>
     <vendor email="support@jett.com" url="http://www.jett.com">jett</vendor>
-
     <actions>
         <group id="MyPlugin.MenuTools" text="_Menu Tools" description="Menu tools for plugin" >
             <add-to-group group-id="ToolsMenu" anchor="last"/>
@@ -16,4 +15,6 @@
             </action>
         </group>
     </actions>
+
+    <depends>com.intellij.modules.platform</depends>
 </idea-plugin>
