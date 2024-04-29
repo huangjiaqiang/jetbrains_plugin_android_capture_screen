@@ -21,7 +21,8 @@ intellij {
 
     dependencies{
 //        implementation("com.android.tools.build:android-sdk-platform-tools:33.0.2")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+        compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+
 //        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
     }
 }
