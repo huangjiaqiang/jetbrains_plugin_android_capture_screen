@@ -26,6 +26,7 @@ internal class CaptureScreenAction : AnAction() {
 
 
 
+
     override fun actionPerformed(e: AnActionEvent) {
 
         val frame = JFrame().apply {
@@ -40,8 +41,16 @@ internal class CaptureScreenAction : AnAction() {
 
             add(imageLabel, BorderLayout.CENTER)
 
+            // 新增Setting按钮
+            val settingButton = JButton("Settings").apply {
+                addActionListener {
+                    showSettingWindow()
+                }
+            }
+
             add(JPanel().apply {
                 add(captureButton)
+                add(settingButton)
             }, BorderLayout.SOUTH)
 
             isVisible = true
@@ -114,7 +123,8 @@ internal class CaptureScreenAction : AnAction() {
     private fun captureScreenWithAdb(): BufferedImage {
         /* Call 'adb' command and capture the screen image of your Android device here */
         val rt = Runtime.getRuntime()
-        val commands = arrayOf("adb", "exec-out", "screencap", "-p")
+        val adbPath = Config.get<String>("adb")?:"adb"
+        val commands = arrayOf(adbPath, "exec-out", "screencap", "-p")
         val proc = rt.exec(commands)
         return ImageIO.read(proc.inputStream)
     }
