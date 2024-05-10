@@ -19,14 +19,14 @@ object Config {
         }
     }
 
-//    private val properties by lazy {
-//        loadProperties()
-//    }
+    private val properties by lazy {
+        loadProperties()
+    }
 
-    private val properties : Properties
-        get() {
-            return loadProperties()
-        }
+//    private val properties : Properties
+//        get() {
+//            return loadProperties()
+//        }
 
     fun loadProperties(): Properties {
         val properties = Properties()
