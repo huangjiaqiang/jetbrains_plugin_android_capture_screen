@@ -1,7 +1,9 @@
 package com.jett.androidtool
 
+import com.intellij.vcs.commit.commitProperty
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Paths
 import java.util.*
 import kotlin.io.path.absolutePathString
@@ -17,6 +19,10 @@ object Config {
         }
     }
 
+    private val properties by lazy {
+        loadProperties()
+    }
+
     fun loadProperties(): Properties {
         val properties = Properties()
 
@@ -27,11 +33,18 @@ object Config {
     }
 
     fun <T> put(key:String, value: T){
-        loadProperties().put(key, value)
+        properties.put(key, value)
+        saveProperties()
+    }
+
+    fun saveProperties() {
+        FileOutputStream(configFile).use { fileOutputStream ->
+            properties.store(fileOutputStream, null)
+        }
     }
 
     fun <T>  get(key:String): T?{
-        return loadProperties().get(key) as? T
+        return properties.get(key) as? T
     }
 
 }
