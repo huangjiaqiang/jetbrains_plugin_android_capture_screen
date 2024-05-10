@@ -38,7 +38,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("222")
+        sinceBuild.set("221")
         untilBuild.set("242.*")
     }
 
@@ -50,5 +50,17 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
+    }
+
+    findByName("buildPlugin")?.apply {
+
+    }?.doLast {
+         println("xxxxxxx ${outputs.files.files}")
+
+        outputs.files.files.forEach {
+            val to = File("${project.projectDir.absolutePath}/releases/${it.name}")
+            to.delete()
+            it.copyTo(to)
+        }
     }
 }
